@@ -56,7 +56,7 @@ export function TourSort({ sort, sortOptions, onSort }: Props) {
             key={option.value}
             selected={option.value === sort}
             onClick={() => {
-              onSort(option.value); // 🔑 update parent state
+              onSort(option.value);
               handleClose();
             }}
           >

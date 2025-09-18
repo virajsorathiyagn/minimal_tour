@@ -1,62 +1,26 @@
-import styled from "@emotion/styled";
 import { Add } from "@mui/icons-material";
 import {
   Autocomplete,
   Box,
-  Breadcrumbs,
   Button,
   Container,
-  CssBaseline,
-  InputAdornment,
-  Link,
-  TextField,
+
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
 import TourFilter from "./TourFilter";
 import { TourSort } from "./TourSort";
+
+import CustomBreadcrumb from "./CustomBreadcrums";
+
 import ListPage from "./pages/cardListPage/ListPage";
 import { tours } from "./data/TourItem";
 import { Icon } from "@iconify/react";
 import type { ITourItem } from "./types/tours";
 
-const BreadcrumbsSeparator = styled("span")(() => ({
-  width: 4,
-  height: 4,
-  borderRadius: "50%",
-  backgroundColor: "#919EAB",
-}));
 
-function handleClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
-  event.preventDefault();
-  console.info("You clicked a breadcrumb.");
-}
-
-const breadcrumbs = [
-  <Link
-    underline="hover"
-    key="1"
-    color="inherit"
-    href="/"
-    onClick={handleClick}
-    sx={{ fontSize: "14px", fontWeight: "600px", color: "#000" }}
-  >
-    Dashboard
-  </Link>,
-  <Link
-    underline="hover"
-    key="2"
-    color="inherit"
-    href="/material-ui/getting-started/installation/"
-    onClick={handleClick}
-    sx={{ fontSize: "14px", fontWeight: "600px", color: "#000" }}
-  >
-    Tour
-  </Link>,
-  <Typography key="3" sx={{ color: "#637381", fontSize: "14px" }}>
-    Viraj
-  </Typography>,
-];
+const name:string[]=["Dashboard","Tour"]
+const link:string[]=["/","/add"]
 
 export default function Tour() {
   const [sort, setSort] = useState("newest");
@@ -79,7 +43,6 @@ export default function Tour() {
     setSearchData(filteredList);
   };
   return (
-    <>
       <React.Fragment>
         <CssBaseline />
         <Container sx={{ maxWidth: "1200px", pt: 1, pr: 5, pb: 8, pl: 5 }}>
@@ -102,20 +65,7 @@ export default function Tour() {
                 <Typography variant="h5" sx={{ fontWeight: "bold" }}>
                   List
                 </Typography>
-                <Breadcrumbs
-                  separator={<BreadcrumbsSeparator />}
-                  aria-label="breadcrumb"
-                  sx={{
-                    "& ol": {
-                      display: "flex",
-                      flexWrap: "wrap",
-                      rowGap: 0.5,
-                      columnGap: 2,
-                    },
-                  }}
-                >
-                  {breadcrumbs}
-                </Breadcrumbs>
+                <CustomBreadcrumb name={name} link={link} current_component="viraj"/>
               </Box>
               <Button
                 variant="contained"
@@ -200,6 +150,5 @@ export default function Tour() {
           <ListPage tourListItems={searchData} />
         </Container>
       </React.Fragment>
-    </>
   );
 }
