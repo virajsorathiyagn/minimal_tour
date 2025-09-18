@@ -11,7 +11,7 @@ export type ITourItem = {
   originalPrice: number;
   discountPrice: number;
   publish: string;
-  images: string[];
+  images: { img: string; rows: number; cols: number }[];
   ratingNumber: number;
   bookers: number;
   available: {
@@ -19,3 +19,7 @@ export type ITourItem = {
     endDate: IDateValue;
   };
 };
+
+export type ITourItemList = {
+  tourListItems: ITourItem[]
+}
