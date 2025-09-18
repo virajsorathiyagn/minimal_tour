@@ -1,18 +1,24 @@
 import styled from "@emotion/styled";
 import { Add } from "@mui/icons-material";
 import {
+  Autocomplete,
   Box,
   Breadcrumbs,
   Button,
   Container,
   CssBaseline,
+  InputAdornment,
   Link,
+  TextField,
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import TourSearch from "./TourSearch";
 import TourFilter from "./TourFilter";
 import { TourSort } from "./TourSort";
+import ListPage from "./pages/cardListPage/ListPage";
+import { tours } from "./data/TourItem";
+import { Icon } from "@iconify/react";
+import type { ITourItem } from "./types/tours";
 
 const BreadcrumbsSeparator = styled("span")(() => ({
   width: 4,
@@ -54,7 +60,24 @@ const breadcrumbs = [
 
 export default function Tour() {
   const [sort, setSort] = useState("newest");
-
+  const [inputValue, setInputValue] = useState("");
+  const [searchData, setSearchData] = useState(tours);
+  let filteredList: ITourItem[] = tours;
+  const filterData = (query: string, data: ITourItem[]) => {
+    if (!query) {
+      return data;
+    }
+    return data.filter(
+      (item) =>
+        item.name.toLowerCase().includes(query.toLowerCase()) ||
+        item.location.toLowerCase().includes(query.toLowerCase())
+    );
+  };
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+    filteredList = filterData(event.target.value, tours);
+    setSearchData(filteredList);
+  };
   return (
     <>
       <React.Fragment>
@@ -105,7 +128,7 @@ export default function Tour() {
                   px: 1.2,
                   textTransform: "capitalize",
                   fontWeight: "bold",
-                   fontFamily: `Public Sans Variable, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
+                  fontFamily: `Public Sans Variable, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
                   "&:hover": {
                     backgroundColor: "#545454ff",
                     px: 1.2,
@@ -126,7 +149,40 @@ export default function Tour() {
                 alignItems: "center",
               }}
             >
-              <TourSearch />
+              <Autocomplete
+                popupIcon={null}
+                options={[]}
+                disableClearable
+                sx={{ width: { xs: 1, sm: 260 } }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    placeholder="Search..."
+                    value={inputValue}
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                      handleInputChange(event)
+                    }
+                    slotProps={{
+                      input: {
+                        ...params.InputProps,
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <Box
+                              sx={{
+                                ml: 1,
+                                color: "text.disabled",
+                                display: "flex",
+                              }}
+                            >
+                              <Icon icon="eva:search-fill" />
+                            </Box>
+                          </InputAdornment>
+                        ),
+                      },
+                    }}
+                  />
+                )}
+              />
               <Box sx={{ display: "flex", flexDirection: "row", gap: 1 }}>
                 <TourFilter />
                 <TourSort
@@ -141,6 +197,7 @@ export default function Tour() {
               </Box>
             </Box>
           </Box>
+          <ListPage tourListItems={searchData} />
         </Container>
       </React.Fragment>
     </>

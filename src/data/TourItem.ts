@@ -9,9 +9,9 @@ export const tours: ITourItem[] = [
     discountPrice: 83.74,
     publish: "2025-09-17T16:10:00",
     images: [
-      "/images/tour1-main.jpg",
-      "/images/tour1-1.jpg",
-      "/images/tour1-2.jpg",
+      { img: "src/assets/Images/travel/travel-1.webp", rows: 2, cols: 3 },
+      { img: "src/assets/Images/travel/travel-2.webp", rows: 1, cols: 1 },
+      { img: "src/assets/Images/travel/travel-3.webp", rows: 1, cols: 1 },
     ],
     ratingNumber: 4.2,
     bookers: 12,
@@ -27,7 +27,11 @@ export const tours: ITourItem[] = [
     originalPrice: 250,
     discountPrice: 199,
     publish: "2025-09-12T10:30:00",
-    images: ["/images/tour2-main.jpg", "/images/tour2-1.jpg", "/images/tour2-2.jpg"],
+    images: [
+      { img: "src/assets/Images/travel/travel-2.webp", rows: 2, cols: 3 },
+      { img: "src/assets/Images/travel/travel-3.webp", rows: 1, cols: 1 },
+      { img: "src/assets/Images/travel/travel-4.webp", rows: 1, cols: 1 },
+    ],
     ratingNumber: 4.8,
     bookers: 34,
     available: {
@@ -42,7 +46,11 @@ export const tours: ITourItem[] = [
     originalPrice: 300,
     discountPrice: 249,
     publish: "2025-09-15T09:15:00",
-    images: ["/images/tour3-main.jpg", "/images/tour3-1.jpg", "/images/tour3-2.jpg"],
+    images: [
+      { img: "src/assets/Images/travel/travel-3.webp", rows: 2, cols: 3 },
+      { img: "src/assets/Images/travel/travel-4.webp", rows: 1, cols: 1 },
+      { img: "src/assets/Images/travel/travel-5.webp", rows: 1, cols: 1 },
+    ],
     ratingNumber: 4.6,
     bookers: 20,
     available: {
@@ -57,7 +65,11 @@ export const tours: ITourItem[] = [
     originalPrice: 180,
     discountPrice: 150,
     publish: "2025-09-10T14:45:00",
-    images: ["/images/tour4-main.jpg", "/images/tour4-1.jpg", "/images/tour4-2.jpg"],
+    images: [
+      { img: "src/assets/Images/travel/travel-4.webp", rows: 2, cols: 3 },
+      { img: "src/assets/Images/travel/travel-5.webp", rows: 1, cols: 1 },
+      { img: "src/assets/Images/travel/travel-6.webp", rows: 1, cols: 1 },
+    ],
     ratingNumber: 4.9,
     bookers: 45,
     available: {
@@ -72,7 +84,11 @@ export const tours: ITourItem[] = [
     originalPrice: 220,
     discountPrice: 180,
     publish: "2025-09-08T11:00:00",
-    images: ["/images/tour5-main.jpg", "/images/tour5-1.jpg", "/images/tour5-2.jpg"],
+    images: [
+      { img: "src/assets/Images/travel/travel-5.webp", rows: 2, cols: 3 },
+      { img: "src/assets/Images/travel/travel-6.webp", rows: 1, cols: 1 },
+      { img: "src/assets/Images/travel/travel-7.webp", rows: 1, cols: 1 },
+    ],
     ratingNumber: 4.7,
     bookers: 27,
     available: {
@@ -87,7 +103,11 @@ export const tours: ITourItem[] = [
     originalPrice: 350,
     discountPrice: 299,
     publish: "2025-09-05T09:20:00",
-    images: ["/images/tour6-main.jpg", "/images/tour6-1.jpg", "/images/tour6-2.jpg"],
+    images: [
+      { img: "src/assets/Images/travel/travel-6.webp", rows: 2, cols: 3 },
+      { img: "src/assets/Images/travel/travel-7.webp", rows: 1, cols: 1 },
+      { img: "src/assets/Images/travel/travel-8.webp", rows: 1, cols: 1 },
+    ],
     ratingNumber: 4.5,
     bookers: 19,
     available: {
@@ -102,7 +122,11 @@ export const tours: ITourItem[] = [
     originalPrice: 200,
     discountPrice: 160,
     publish: "2025-09-02T13:30:00",
-    images: ["/images/tour7-main.jpg", "/images/tour7-1.jpg", "/images/tour7-2.jpg"],
+    images: [
+      { img: "src/assets/Images/travel/travel-7.webp", rows: 2, cols: 3 },
+      { img: "src/assets/Images/travel/travel-8.webp", rows: 1, cols: 1 },
+      { img: "src/assets/Images/travel/travel-9.webp", rows: 1, cols: 1 },
+    ],
     ratingNumber: 4.3,
     bookers: 14,
     available: {
@@ -117,7 +141,11 @@ export const tours: ITourItem[] = [
     originalPrice: 400,
     discountPrice: 350,
     publish: "2025-09-01T08:00:00",
-    images: ["/images/tour8-main.jpg", "/images/tour8-1.jpg", "/images/tour8-2.jpg"],
+    images: [
+      { img: "src/assets/Images/travel/travel-8.webp", rows: 2, cols: 3 },
+      { img: "src/assets/Images/travel/travel-9.webp", rows: 1, cols: 1 },
+      { img: "src/assets/Images/travel/travel-10.webp", rows: 1, cols: 1 },
+    ],
     ratingNumber: 4.9,
     bookers: 52,
     available: {
@@ -132,7 +160,11 @@ export const tours: ITourItem[] = [
     originalPrice: 280,
     discountPrice: 230,
     publish: "2025-09-03T17:40:00",
-    images: ["/images/tour9-main.jpg", "/images/tour9-1.jpg", "/images/tour9-2.jpg"],
+    images: [
+      { img: "src/assets/Images/travel/travel-9.webp", rows: 2, cols: 3 },
+      { img: "src/assets/Images/travel/travel-10.webp", rows: 1, cols: 1 },
+      { img: "src/assets/Images/travel/travel-11.webp", rows: 1, cols: 1 },
+    ],
     ratingNumber: 4.4,
     bookers: 22,
     available: {
@@ -147,7 +179,11 @@ export const tours: ITourItem[] = [
     originalPrice: 500,
     discountPrice: 420,
     publish: "2025-09-07T15:00:00",
-    images: ["/images/tour10-main.jpg", "/images/tour10-1.jpg", "/images/tour10-2.jpg"],
+    images: [
+      { img: "src/assets/Images/travel/travel-10.webp", rows: 2, cols: 3 },
+      { img: "src/assets/Images/travel/travel-11.webp", rows: 1, cols: 1 },
+      { img: "src/assets/Images/travel/travel-12.webp", rows: 1, cols: 1 },
+    ],
     ratingNumber: 4.8,
     bookers: 36,
     available: {
@@ -162,7 +198,11 @@ export const tours: ITourItem[] = [
     originalPrice: 150,
     discountPrice: 120,
     publish: "2025-09-11T18:20:00",
-    images: ["/images/tour11-main.jpg", "/images/tour11-1.jpg", "/images/tour11-2.jpg"],
+    images: [
+      { img: "src/assets/Images/travel/travel-11.webp", rows: 2, cols: 3 },
+      { img: "src/assets/Images/travel/travel-12.webp", rows: 1, cols: 1 },
+      { img: "src/assets/Images/travel/travel-13.webp", rows: 1, cols: 1 },
+    ],
     ratingNumber: 4.6,
     bookers: 29,
     available: {
@@ -177,7 +217,11 @@ export const tours: ITourItem[] = [
     originalPrice: 180,
     discountPrice: 140,
     publish: "2025-09-09T12:10:00",
-    images: ["/images/tour12-main.jpg", "/images/tour12-1.jpg", "/images/tour12-2.jpg"],
+    images: [
+      { img: "src/assets/Images/travel/travel-12.webp", rows: 2, cols: 3 },
+      { img: "src/assets/Images/travel/travel-13.webp", rows: 1, cols: 1 },
+      { img: "src/assets/Images/travel/travel-14.webp", rows: 1, cols: 1 },
+    ],
     ratingNumber: 4.2,
     bookers: 17,
     available: {
