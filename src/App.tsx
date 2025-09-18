@@ -1,9 +1,11 @@
-import Tour from "./Tour"
+// import Tour from "./Tour"
+import { TourCreateView } from "./TourCreate/TourCreateView"
 
 function App() {
   return (
     <>
-      <Tour />
+      {/* <Tour /> */}
+      <TourCreateView />
     </>
   )
 }
