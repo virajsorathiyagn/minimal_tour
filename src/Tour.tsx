@@ -5,6 +5,10 @@ import {
   Button,
   Container,
 
+  InputAdornment,
+
+  TextField,
+
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
@@ -44,7 +48,6 @@ export default function Tour() {
   };
   return (
       <React.Fragment>
-        <CssBaseline />
         <Container sx={{ maxWidth: "1200px", pt: 1, pr: 5, pb: 8, pl: 5 }}>
           <Box sx={{ mb: 5 }}>
             <Box
@@ -69,7 +72,6 @@ export default function Tour() {
               </Box>
               <Button
                 variant="contained"
-                href="/dashboard/tour/new"
                 disableElevation
                 startIcon={<Add />}
                 sx={{
