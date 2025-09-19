@@ -6,6 +6,7 @@ import {
   Autocomplete,
   Avatar,
   Box,
+  Button,
   Checkbox,
   Chip,
   Divider,
@@ -20,6 +21,7 @@ import {
   OutlinedInput,
   Paper,
   Stack,
+  Switch,
   TextField,
   ToggleButton,
   ToggleButtonGroup,
@@ -38,6 +40,7 @@ import { Icon } from "@iconify/react";
 import dayjs from "dayjs";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import FileUploadBox from "../componentes/FileUploadBox";
 
 export default function TourNewEditForm() {
   const [value, setValue] = useState("");
@@ -203,7 +206,7 @@ export default function TourNewEditForm() {
               >
                 Content
               </Typography>
-              <Box sx={{ border: "1px solid #919eab", borderRadius: 1 }}>
+              <Box sx={{ border: "1px solid #cfcfcfff", borderRadius: 3 }}>
                 {/* functionality box */}
                 <Box
                   sx={{
@@ -212,7 +215,7 @@ export default function TourNewEditForm() {
                     display: "flex",
                     flexDirection: "row",
                     // border: "1px solid black",
-                    borderBottom: "1px solid #919eab",
+                    borderBottom: "1px solid #cfcfcfff",
                     alignItems: "center",
                     gap: 1,
                     p: 1.25,
@@ -268,7 +271,7 @@ export default function TourNewEditForm() {
                     aria-label="text formatting"
                     sx={{
                       display: "flex",
-                      gap: 0.5, // adds spacing between buttons
+                      gap: 0.5,
                     }}
                   >
                     <ToggleButton
@@ -298,7 +301,7 @@ export default function TourNewEditForm() {
                     aria-label="text formatting"
                     sx={{
                       display: "flex",
-                      gap: 0.5, // adds spacing between buttons
+                      gap: 0.5,
                     }}
                   >
                     <ToggleButton
@@ -344,19 +347,19 @@ export default function TourNewEditForm() {
                   <TextField
                     id="filled-multiline-static"
                     multiline
-                    rows={10}
+                    rows={7}
                     placeholder="Write Something awesome..."
                     variant="outlined"
                     sx={{
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
-                          border: "none", // remove default border
+                          border: "none",
                         },
                         "&:hover fieldset": {
-                          border: "none", // remove hover border
+                          border: "none",
                         },
                         "&.Mui-focused fieldset": {
-                          border: "none", // remove focus border (blue one)
+                          border: "none",
                         },
                       },
                     }}
@@ -364,11 +367,33 @@ export default function TourNewEditForm() {
                 </Box>
               </Box>
             </Box>
+
+            {/* Image Field */}
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 1.2,
+              }}
+            >
+              <Typography
+                variant="h6"
+                sx={{
+                  fontWeight: 600,
+                  fontSize: "0.875rem",
+                  lineHeight: 1.57143,
+                }}
+              >
+                Image
+              </Typography>
+              <FileUploadBox />
+            </Box>
           </Box>
         </Paper>
       </AccordionDetails>
     </Accordion>
   );
+
   const renderProperties = () => (
     <>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -681,6 +706,41 @@ export default function TourNewEditForm() {
       </LocalizationProvider>
     </>
   );
+
+  const renderActions = () => (
+    <Box sx={{ display: "flex", flexWrap: "wrap", alignItems: "center" }}>
+      <FormControlLabel
+        label="Publish"
+        control={
+          <Switch defaultChecked inputProps={{ id: "publish-switch" }} />
+        }
+        sx={{ flexGrow: 1, pl: 3 }}
+      />
+
+      <Button
+        variant="contained"
+        disableElevation
+        sx={{
+          backgroundColor: "#000",
+          borderRadius: 2,
+          px: 2,
+          py: 1,
+          textTransform: "capitalize",
+          fontSize: "0.9375rem",
+          fontWeight: "bold",
+          fontFamily: `Public Sans Variable, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
+          "&:hover": {
+            backgroundColor: "#545454ff",
+            px: 2,
+            py: 1,
+          },
+        }}
+      >
+        Create Tour
+      </Button>
+    </Box>
+  );
+
   return (
     <Stack
       spacing={{ xs: 3, md: 5 }}
@@ -688,6 +748,7 @@ export default function TourNewEditForm() {
     >
       {renderDetails()}
       {renderProperties()}
+      {renderActions()}
     </Stack>
   );
 }
