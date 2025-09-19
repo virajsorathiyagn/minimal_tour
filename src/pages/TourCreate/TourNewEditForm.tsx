@@ -1,4 +1,4 @@
-import { ExpandMore } from "@mui/icons-material";
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import {
   Accordion,
   AccordionDetails,
@@ -426,19 +426,10 @@ export default function TourNewEditForm() {
                   onClick={handleOpenClick}
                 >
                   {open ? (
-                    <Icon
-                      icon="formkit:down"
-                      width="16"
-                      height="16"
-                      color="black"
-                    />
+                    <ExpandLess />
+                    
                   ) : (
-                    <Icon
-                      icon="icon-park-outline:right"
-                      width="16"
-                      height="16"
-                      color="black"
-                    />
+                    <ExpandMore />
                   )}
                 </IconButton>
               </Box>
