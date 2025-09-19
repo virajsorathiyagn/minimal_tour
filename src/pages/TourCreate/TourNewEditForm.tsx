@@ -28,7 +28,6 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import CustomMenu from "../componentes/CustomMenu";
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import FormatItalicIcon from "@mui/icons-material/FormatItalic";
 import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
@@ -40,7 +39,8 @@ import { Icon } from "@iconify/react";
 import dayjs from "dayjs";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import FileUploadBox from "../componentes/FileUploadBox";
+import CustomMenu from "../../componentes/customMenu/CustomMenu";
+import FileUploadBox from "../../componentes/formComponents/FileUploadBox";
 
 export default function TourNewEditForm() {
   const [value, setValue] = useState("");

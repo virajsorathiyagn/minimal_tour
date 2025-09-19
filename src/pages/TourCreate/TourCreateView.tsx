@@ -1,11 +1,10 @@
 import { Box, Container, CssBaseline, Typography } from "@mui/material";
 import React from "react";
-import CustomBreadcrumb from "../CustomBreadcrums";
 import TourNewEditForm from "./TourNewEditForm";
+import CustomBreadcrumb from "../../componentes/menubarComponents/CustomBreadcrums";
 
-
-const name:string[]=["Dashboard","Job"]
-const link:string[]=["/","/job"]
+const name: string[] = ["Dashboard", "Job"];
+const link: string[] = ["/", "/job"];
 
 export function TourCreateView() {
   return (
@@ -38,7 +37,6 @@ export function TourCreateView() {
                   current_component="Create"
                 />
               </Box>
-              
             </Box>
           </Box>
 
