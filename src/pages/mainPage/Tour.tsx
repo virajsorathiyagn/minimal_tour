@@ -9,16 +9,16 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import TourFilter from "./TourFilter";
-import { TourSort } from "./TourSort";
+import TourFilter from "../../componentes/menubarComponents/TourFilter";
+import { TourSort } from "../../componentes/menubarComponents/TourSort";
 
-import CustomBreadcrumb from "./CustomBreadcrums";
+import CustomBreadcrumb from "../../componentes/menubarComponents/CustomBreadcrums";
 
-import ListPage from "./pages/cardListPage/ListPage";
-import { tours } from "./data/TourItem";
+import ListPage from "../cardListPage/ListPage";
+import { tours } from "../../data/TourItem";
 import { Icon } from "@iconify/react";
-import type { ITourItem } from "./types/tours";
-import { Outlet, useNavigate } from "react-router";
+import type { ITourItem } from "../../types/tours";
+import { useNavigate } from "react-router";
 
 const name: string[] = ["Dashboard", "Tour"];
 const link: string[] = ["/", "/add"];
@@ -89,7 +89,7 @@ export default function Tour() {
                 backgroundColor: "#000",
                 borderRadius: 2,
                 px: 1.2,
-                textTransform: "capitalize",
+                textTransform: "none",
                 fontWeight: "bold",
                 fontFamily: `Public Sans Variable, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
                 "&:hover": {

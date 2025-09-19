@@ -1,6 +1,6 @@
 import { createBrowserRouter, Navigate } from "react-router";
-import Tour from "../Tour";
-import { TourCreateView } from "../TourCreate/TourCreateView";
+import Tour from "../pages/mainPage/Tour";
+import { TourCreateView } from "../pages/TourCreate/TourCreateView";
 
 const router = createBrowserRouter([
   {

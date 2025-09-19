@@ -1,11 +1,10 @@
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import Button from "@mui/material/Button";
-import Menu, { MenuProps } from "@mui/material/Menu";
+import Menu, { type MenuProps } from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
-// Styled menu (compact)
 const StyledMenu = styled((props: MenuProps) => (
   <Menu
     elevation={0}
@@ -23,7 +22,7 @@ const StyledMenu = styled((props: MenuProps) => (
   "& .MuiPaper-root": {
     borderRadius: 6,
     marginTop: theme.spacing(0.5),
-    minWidth: 120, // smaller width
+    minWidth: 120,
     color: theme.palette.text.primary,
     boxShadow:
       "rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 6px 10px -3px",
@@ -32,8 +31,8 @@ const StyledMenu = styled((props: MenuProps) => (
     },
     "& .MuiMenuItem-root": {
       fontSize: "0.8rem",
-      minHeight: "30px", // smaller item height
-      padding: "2px 10px", // compact padding
+      minHeight: "30px",
+      padding: "2px 10px",
       "&:active": {
         backgroundColor: alpha(
           theme.palette.primary.main,
@@ -74,7 +73,7 @@ export default function CustomMenu() {
           color: "black",
           textTransform: "none",
           fontWeight: 400,
-          fontSize: "0.8rem", // smaller font
+          fontSize: "0.8rem",
           "&:hover": {
             backgroundColor: "transparent",
             borderColor: "#000",
@@ -82,8 +81,8 @@ export default function CustomMenu() {
           justifyContent: "space-between",
           px: 1,
           py: 0,
-          minWidth: 100, // narrower button
-          height: 35, // smaller height
+          minWidth: 100,
+          height: 35,
         }}
       >
         {selected}
