@@ -210,10 +210,10 @@ export default function TourNewEditForm() {
                 {/* functionality box */}
                 <Box
                   sx={{
-                    height: "60px",
                     backgroundColor: "#ffffff",
                     display: "flex",
                     flexDirection: "row",
+                    flexWrap: "wrap",
                     // border: "1px solid black",
                     borderBottom: "1px solid #cfcfcfff",
                     alignItems: "center",
@@ -401,7 +401,7 @@ export default function TourNewEditForm() {
           elevation={3}
           sx={{
             p: "20px",
-            boxShadow: "1px 10px 30px -20px #050404ff",
+            // boxShadow: "1px 10px 30px -20px #050404ff",
             borderRadius: "20px",
           }}
         >
@@ -569,13 +569,12 @@ export default function TourNewEditForm() {
                     id="outlined-basic"
                     placeholder="Ex: 2 Days, 4 Days 3 Nights"
                     variant="outlined"
+                    fullWidth
                     sx={{
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderRadius: "10px",
                           borderColor: "grey",
-                          height: "55px",
-                          width: "825px",
                         },
                       },
                     }}
@@ -634,7 +633,11 @@ export default function TourNewEditForm() {
                   <Typography fontWeight={"700"} fontSize={"13px"} mb={2}>
                     Services
                   </Typography>
-                  <Box display={"flex"} flexDirection={"row"} gap={10}>
+                  <Box
+                    display={"flex"}
+                    flexDirection={{ xs: "column", md: "row" }}
+                    gap={{ xs: 0, md: 10 }}
+                  >
                     <FormGroup>
                       {labelData.map((item, index) => {
                         return (
