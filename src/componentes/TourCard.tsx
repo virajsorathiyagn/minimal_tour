@@ -150,7 +150,7 @@ export default function TourCard(tours: ITourItemList) {
                     >
                       Posted date: 18 Sep 2025 10:35 am
                     </Typography>
-                    <Typography fontFamily={"inherit"} fontWeight={"bold"}>
+                    <Typography fontWeight={"bold"}>
                       {items.name}
                       {/* Majestic Mountain Adventures */}
                     </Typography>

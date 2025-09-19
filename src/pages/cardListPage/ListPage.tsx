@@ -1,5 +1,5 @@
 
-import TourCard from "../../components/TourCard";
+import TourCard from "../../componentes/TourCard";
 import type { ITourItemList } from "../../types/tours";
 
 export default function ListPage(tourListItems: ITourItemList) {

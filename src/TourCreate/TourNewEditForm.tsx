@@ -3,13 +3,24 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Autocomplete,
+  Avatar,
   Box,
+  Checkbox,
+  Chip,
   Divider,
   FormControl,
+  FormControlLabel,
+  FormGroup,
   FormHelperText,
+  IconButton,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
   OutlinedInput,
   Paper,
   Stack,
+  TextField,
   ToggleButton,
   ToggleButtonGroup,
   Typography,
@@ -19,13 +30,40 @@ import CustomMenu from "../componentes/CustomMenu";
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import FormatItalicIcon from "@mui/icons-material/FormatItalic";
 import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
+import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
+import FormatAlignCenterIcon from "@mui/icons-material/FormatAlignCenter";
+import FormatAlignRightIcon from "@mui/icons-material/FormatAlignRight";
+import FormatAlignJustifyIcon from "@mui/icons-material/FormatAlignJustify";
+import { Icon } from "@iconify/react";
+import dayjs from "dayjs";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 export default function TourNewEditForm() {
   const [value, setValue] = useState("");
   const [touched, setTouched] = useState(false);
 
   const hasError = touched && !value;
+  const labelData: string[] = [
+    "Audio Guide",
+    "Lunch",
+    "Special Activity",
+    "Gratuities",
+    "Professional Guide",
+  ];
 
+  const label2Data: string[] = [
+    "Foods and Drinks",
+    "Private Tour",
+    "Entrance Fees",
+    "Pick-up and drop off",
+    "Transport by air-conditioned",
+  ];
+  const [open, setOpen] = useState(false);
+  const handleOpenClick = () => {
+    setOpen((prev) => !prev);
+    console.log("open clicked");
+  };
   const [formats, setFormats] = React.useState(() => ["bold", "italic"]);
 
   const handleFormat = (
@@ -165,7 +203,7 @@ export default function TourNewEditForm() {
               >
                 Content
               </Typography>
-              <Box>
+              <Box sx={{ border: "1px solid #919eab", borderRadius: 1 }}>
                 {/* functionality box */}
                 <Box
                   sx={{
@@ -193,27 +231,27 @@ export default function TourNewEditForm() {
                     aria-label="text formatting"
                     sx={{
                       display: "flex",
-                      gap: 1.5, // adds spacing between buttons
+                      gap: 0.5, // adds spacing between buttons
                     }}
                   >
                     <ToggleButton
                       value="bold"
                       aria-label="bold"
-                      sx={{ minWidth: 25, height: 30, border: "none", p: 0 }}
+                      sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
                     >
                       <FormatBoldIcon sx={{ fontSize: "22px" }} />
                     </ToggleButton>
                     <ToggleButton
                       value="italic"
                       aria-label="italic"
-                      sx={{ minWidth: 25, height: 30, border: "none", p: 0 }}
+                      sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
                     >
                       <FormatItalicIcon sx={{ fontSize: "22px" }} />
                     </ToggleButton>
                     <ToggleButton
                       value="underlined"
                       aria-label="underlined"
-                      sx={{ minWidth: 25, height: 30, border: "none", p: 0 }}
+                      sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
                     >
                       <FormatUnderlinedIcon sx={{ fontSize: "22px" }} />
                     </ToggleButton>
@@ -223,9 +261,107 @@ export default function TourNewEditForm() {
                     orientation="vertical"
                     sx={{ height: "17px", alignItems: "center" }}
                   />
+
+                  <ToggleButtonGroup
+                    value={formats}
+                    onChange={handleFormat}
+                    aria-label="text formatting"
+                    sx={{
+                      display: "flex",
+                      gap: 0.5, // adds spacing between buttons
+                    }}
+                  >
+                    <ToggleButton
+                      value="left"
+                      aria-label="left aligned"
+                      sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
+                    >
+                      <Icon icon="pixel:bullet-list" width="22" height="24" />
+                    </ToggleButton>
+                    <ToggleButton
+                      value="center"
+                      aria-label="centered"
+                      sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
+                    >
+                      <Icon icon="bx:list-ol" width="24" height="24" />
+                    </ToggleButton>
+                  </ToggleButtonGroup>
+
+                  <Divider
+                    orientation="vertical"
+                    sx={{ height: "17px", alignItems: "center" }}
+                  />
+
+                  <ToggleButtonGroup
+                    value={formats}
+                    onChange={handleFormat}
+                    aria-label="text formatting"
+                    sx={{
+                      display: "flex",
+                      gap: 0.5, // adds spacing between buttons
+                    }}
+                  >
+                    <ToggleButton
+                      value="left"
+                      aria-label="left aligned"
+                      sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
+                    >
+                      <FormatAlignLeftIcon sx={{ fontSize: "20px" }} />
+                    </ToggleButton>
+                    <ToggleButton
+                      value="center"
+                      aria-label="centered"
+                      sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
+                    >
+                      <FormatAlignCenterIcon sx={{ fontSize: "20px" }} />
+                    </ToggleButton>
+                    <ToggleButton
+                      value="right"
+                      aria-label="right aligned"
+                      sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
+                    >
+                      <FormatAlignRightIcon sx={{ fontSize: "20px" }} />
+                    </ToggleButton>
+                    <ToggleButton
+                      value="right"
+                      aria-label="right aligned"
+                      sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
+                    >
+                      <FormatAlignJustifyIcon sx={{ fontSize: "20px" }} />
+                    </ToggleButton>
+                  </ToggleButtonGroup>
                 </Box>
                 {/* Text Box */}
-                <Box></Box>
+                <Box
+                  component="form"
+                  sx={{
+                    "& .MuiTextField-root": { width: "100%" },
+                    backgroundColor: "#f6f7f8",
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <TextField
+                    id="filled-multiline-static"
+                    multiline
+                    rows={10}
+                    placeholder="Write Something awesome..."
+                    variant="outlined"
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        "& fieldset": {
+                          border: "none", // remove default border
+                        },
+                        "&:hover fieldset": {
+                          border: "none", // remove hover border
+                        },
+                        "&.Mui-focused fieldset": {
+                          border: "none", // remove focus border (blue one)
+                        },
+                      },
+                    }}
+                  />
+                </Box>
               </Box>
             </Box>
           </Box>
@@ -233,13 +369,325 @@ export default function TourNewEditForm() {
       </AccordionDetails>
     </Accordion>
   );
-
+  const renderProperties = () => (
+    <>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <Paper
+          elevation={3}
+          sx={{
+            p: "20px",
+            boxShadow: "1px 10px 30px -20px #050404ff",
+            borderRadius: "20px",
+          }}
+        >
+          {/* Main Box */}
+          <Box>
+            {/* Title box */}
+            <Box>
+              {/* Box with icon */}
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Typography sx={{ fontWeight: "700", fontSize: "20px", mb: 1 }}>
+                  Properties
+                </Typography>
+                <IconButton
+                  aria-label="delete"
+                  color="primary"
+                  onClick={handleOpenClick}
+                >
+                  {open ? (
+                    <Icon
+                      icon="formkit:down"
+                      width="16"
+                      height="16"
+                      color="black"
+                    />
+                  ) : (
+                    <Icon
+                      icon="icon-park-outline:right"
+                      width="16"
+                      height="16"
+                      color="black"
+                    />
+                  )}
+                </IconButton>
+              </Box>
+              <Typography color="grey">
+                Additional functions and attributes...
+              </Typography>
+            </Box>
+            {open && (
+              <Box
+                mt={2}
+                sx={{ display: "flex", flexDirection: "column", gap: 3 }}
+              >
+                <Divider sx={{ width: "100%", borderBottomWidth: 2 }} />
+                {/* Tour guide */}
+                <Box mb={2}>
+                  <Typography fontWeight={"700"} fontSize={"13px"} mb={2}>
+                    Tour Guide
+                  </Typography>
+                  <Autocomplete
+                    multiple
+                    id="tags-outlined"
+                    options={["Deep", "Viraj"]}
+                    getOptionLabel={(option) => option}
+                    defaultValue={["viraj"]}
+                    filterSelectedOptions
+                    renderTags={(value, getTagProps) =>
+                      value.map((option, index) => (
+                        <Chip
+                          sx={{
+                            bgcolor: "grey.300",
+                            borderRadius: "8px",
+                          }}
+                          avatar={
+                            <Avatar
+                              alt="Natacha"
+                              src="https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/public/assets/images/mock/avatar/avatar-2.webp"
+                            />
+                          }
+                          label={option}
+                          variant="outlined"
+                          {...getTagProps({ index })}
+                        />
+                      ))
+                    }
+                    renderOption={(props, option, { selected }) => (
+                      <li {...props} key={option}>
+                        <ListItem disableGutters disablePadding>
+                          <ListItemAvatar>
+                            <Avatar
+                              alt={option}
+                              src={
+                                "https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/public/assets/images/mock/avatar/avatar-2.webp"
+                              }
+                            />
+                          </ListItemAvatar>
+                          <ListItemText
+                            primary={`${option} ${
+                              selected ? "(Selected)" : ""
+                            }`}
+                          />
+                        </ListItem>
+                      </li>
+                    )}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        placeholder="+Tour Guides"
+                        sx={{
+                          "& .MuiOutlinedInput-root": {
+                            "& fieldset": {
+                              borderRadius: "10px",
+                              borderColor: "grey",
+                            },
+                          },
+                        }}
+                      />
+                    )}
+                  />
+                </Box>
+                <Typography fontWeight={"700"} fontSize={"13px"}>
+                  Available
+                </Typography>
+                {/* Available Box */}
+                <Box
+                  display={"flex"}
+                  flexDirection={"row"}
+                  justifyContent={"space-between"}
+                >
+                  <DatePicker
+                    defaultValue={dayjs("2022-04-17")}
+                    slotProps={{
+                      textField: {
+                        size: "medium",
+                        InputProps: {
+                          sx: {
+                            borderRadius: "10px",
+                            backgroundColor: "white",
+                          }, // Apply the styles here
+                        },
+                      },
+                    }}
+                    sx={{
+                      width: "410px",
+                    }}
+                  />
+                  <DatePicker
+                    slotProps={{
+                      textField: {
+                        size: "medium",
+                        InputProps: {
+                          sx: {
+                            borderRadius: "10px",
+                            backgroundColor: "white",
+                          }, // Apply the styles here
+                        },
+                      },
+                    }}
+                    defaultValue={dayjs("2022-04-17")}
+                    sx={{ width: "410px" }}
+                  />
+                </Box>
+                {/* Duration Box */}
+                <Box>
+                  <Typography fontWeight={"700"} fontSize={"13px"} mb={2}>
+                    Duration
+                  </Typography>
+                  <TextField
+                    id="outlined-basic"
+                    placeholder="Ex: 2 Days, 4 Days 3 Nights"
+                    variant="outlined"
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        "& fieldset": {
+                          borderRadius: "10px",
+                          borderColor: "grey",
+                          height: "55px",
+                          width: "825px",
+                        },
+                      },
+                    }}
+                    // onChange={(event:React.ChangeEvent<HTMLInputElement>) => handleInputChange(event)}
+                  />
+                </Box>
+                {/* Destination Box */}
+                <Box mb={2}>
+                  <Typography fontWeight={"700"} fontSize={"13px"} mb={2}>
+                    Destination
+                  </Typography>
+                  <Autocomplete
+                    freeSolo
+                    id="tags-outlined"
+                    options={["India", "America"]}
+                    getOptionLabel={(option) => option}
+                    filterSelectedOptions
+                    renderOption={(props, option, { selected }) => (
+                      <li {...props} key={option}>
+                        <ListItem disableGutters disablePadding>
+                          <ListItemAvatar>
+                            {/* change here the img url of country */}
+                            <Avatar
+                              alt={option}
+                              src={
+                                "https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/public/assets/images/mock/avatar/avatar-2.webp"
+                              }
+                            />
+                          </ListItemAvatar>
+                          <ListItemText
+                            primary={`${option} ${
+                              selected ? "(Selected)" : ""
+                            }`}
+                          />
+                        </ListItem>
+                      </li>
+                    )}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        placeholder="+Destination"
+                        sx={{
+                          "& .MuiOutlinedInput-root": {
+                            "& fieldset": {
+                              borderRadius: "10px",
+                              borderColor: "grey",
+                            },
+                          },
+                        }}
+                      />
+                    )}
+                  />
+                </Box>
+                {/* services */}
+                <Box mb={2}>
+                  <Typography fontWeight={"700"} fontSize={"13px"} mb={2}>
+                    Services
+                  </Typography>
+                  <Box display={"flex"} flexDirection={"row"} gap={10}>
+                    <FormGroup>
+                      {labelData.map((item, index) => {
+                        return (
+                          <FormControlLabel
+                            key={index}
+                            control={<Checkbox />}
+                            label={item}
+                          />
+                        );
+                      })}
+                    </FormGroup>
+                    <FormGroup>
+                      {label2Data.map((item, index) => {
+                        return (
+                          <FormControlLabel
+                            key={index}
+                            control={<Checkbox />}
+                            label={item}
+                          />
+                        );
+                      })}
+                    </FormGroup>
+                  </Box>
+                </Box>
+                {/* Tags */}
+                <Box mb={2}>
+                  <Typography fontWeight={"700"} fontSize={"13px"} mb={2}>
+                    Tags
+                  </Typography>
+                  <Autocomplete
+                    multiple
+                    id="tags-outlined"
+                    options={["Fashion", "Technology"]}
+                    getOptionLabel={(option) => option}
+                    filterSelectedOptions
+                    renderTags={(value, getTagProps) =>
+                      value.map((option, index) => (
+                        <Chip
+                          sx={{
+                            bgcolor: "#d6f4f9",
+                            borderRadius: "8px",
+                          }}
+                          label={option}
+                          variant="outlined"
+                          {...getTagProps({ index })}
+                        />
+                      ))
+                    }
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        placeholder="+Tag"
+                        sx={{
+                          "& .MuiOutlinedInput-root": {
+                            "& fieldset": {
+                              borderRadius: "10px",
+                              borderColor: "grey",
+                            },
+                          },
+                        }}
+                      />
+                    )}
+                  />
+                </Box>
+              </Box>
+            )}
+          </Box>
+        </Paper>
+      </LocalizationProvider>
+    </>
+  );
   return (
     <Stack
       spacing={{ xs: 3, md: 5 }}
       sx={{ mx: "auto", maxWidth: { xs: 720, xl: 880 } }}
     >
       {renderDetails()}
+      {renderProperties()}
     </Stack>
   );
 }
