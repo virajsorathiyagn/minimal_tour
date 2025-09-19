@@ -5,7 +5,6 @@ import {
   CardMedia,
   Chip,
   Grid,
-  IconButton,
   ImageList,
   ImageListItem,
   Stack,
@@ -13,6 +12,7 @@ import {
 } from "@mui/material";
 import { Icon } from "@iconify/react";
 import type { ITourItemList } from "../types/tours";
+import Menu_Component from "./MenuComponent";
 
 function srcset(image: string, size: number, rows = 1, cols = 1) {
   return {
@@ -187,13 +187,7 @@ export default function TourCard(tours: ITourItemList) {
                         />
                         <Typography>{items.bookers} Booked</Typography>
                       </Box>
-                      <IconButton>
-                        <Icon
-                          icon="material-symbols:more-vert"
-                          width="24"
-                          height="24"
-                        />
-                      </IconButton>
+                      <Menu_Component btnColor="black"/>
                     </Stack>
                   </Stack>
                 </CardContent>
