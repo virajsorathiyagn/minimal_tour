@@ -11,8 +11,8 @@ import {
   Typography,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
-import type { ITourItemList } from "../types/tours";
-import Menu_Component from "./MenuComponent";
+import type { ITourItemList } from "../../types/tours";
+import Menu_Component from "../menubarComponents/MenuComponent";
 
 function srcset(image: string, size: number, rows = 1, cols = 1) {
   return {
@@ -187,7 +187,7 @@ export default function TourCard(tours: ITourItemList) {
                         />
                         <Typography>{items.bookers} Booked</Typography>
                       </Box>
-                      <Menu_Component btnColor="black"/>
+                      <Menu_Component btnColor="black" />
                     </Stack>
                   </Stack>
                 </CardContent>
