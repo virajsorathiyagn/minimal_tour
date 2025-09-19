@@ -24,7 +24,7 @@ const name: string[] = ["Dashboard", "Tour"];
 const link: string[] = ["/", "/add"];
 
 export default function Tour() {
-  const [sort, setSort] = useState("newest");
+  const [sort, setSort] = useState("latest");
   const [inputValue, setInputValue] = useState("");
   const [searchData, setSearchData] = useState(tours);
   let filteredList: ITourItem[] = tours;
@@ -59,9 +59,10 @@ export default function Tour() {
           <Box
             sx={{
               display: "flex",
-              flexDirection: "row",
+              flexDirection: {xs: "column", sm: "row"},
               justifyContent: "space-between",
               alignItems: "flex-start",
+              gap: {xs: 1.5, md: 0},
             }}
           >
             <Box
@@ -107,6 +108,7 @@ export default function Tour() {
           <Box
             sx={{
               display: "flex",
+              flexWrap: "wrap",
               flexDirection: "row",
               justifyContent: "space-between",
               alignItems: "center",
@@ -146,13 +148,13 @@ export default function Tour() {
                 />
               )}
             />
-            <Box sx={{ display: "flex", flexDirection: "row", gap: 1 }}>
+            <Box sx={{ display: "flex",flexWrap: "wrap", flexDirection: "row", gap: 1 }}>
               <TourFilter />
               <TourSort
                 sort={sort}
                 onSort={setSort}
                 sortOptions={[
-                  { value: "newest", label: "Newest" },
+                  { value: "latest", label: "Latest" },
                   { value: "popular", label: "Popular" },
                   { value: "oldest", label: "Oldest" },
                 ]}
