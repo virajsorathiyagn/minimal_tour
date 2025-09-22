@@ -46,7 +46,12 @@ export default function TourNewEditForm() {
   const [value, setValue] = useState("");
   const [touched, setTouched] = useState(false);
 
+  const [contentvalue, setContentValue] = useState("");
+  const [contenttouched, setcontentTouched] = useState(false);
+
   const hasError = touched && !value;
+  const hasContentError = contenttouched && !contentvalue;
+
   const labelData: string[] = [
     "Audio Guide",
     "Lunch",
@@ -206,166 +211,144 @@ export default function TourNewEditForm() {
               >
                 Content
               </Typography>
-              <Box sx={{ border: "1px solid #cfcfcfff", borderRadius: 3 }}>
-                {/* functionality box */}
-                <Box
-                  sx={{
-                    backgroundColor: "#ffffff",
-                    display: "flex",
-                    flexDirection: "row",
-                    flexWrap: "wrap",
-                    // border: "1px solid black",
-                    borderBottom: "1px solid #cfcfcfff",
-                    alignItems: "center",
-                    gap: 1,
-                    p: 1.25,
-                  }}
+
+              {/* Toolbar */}
+              <Box
+                sx={{
+                  backgroundColor: "#ffffff",
+                  display: "flex",
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  border: "1px solid #cfcfcf",
+                  borderBottom: "none",
+                  borderTopLeftRadius: "8px",
+                  borderTopRightRadius: "8px",
+                  alignItems: "center",
+                  gap: 1,
+                  p: 1.25,
+                }}
+              >
+                <CustomMenu />
+
+                <Divider orientation="vertical" sx={{ height: "17px" }} />
+
+                <ToggleButtonGroup
+                  value={formats}
+                  onChange={handleFormat}
+                  aria-label="text formatting"
+                  sx={{ display: "flex", gap: 0.5 }}
                 >
-                  <CustomMenu />
-
-                  <Divider
-                    orientation="vertical"
-                    sx={{ height: "17px", alignItems: "center" }}
-                  />
-
-                  <ToggleButtonGroup
-                    value={formats}
-                    onChange={handleFormat}
-                    aria-label="text formatting"
-                    sx={{
-                      display: "flex",
-                      gap: 0.5, // adds spacing between buttons
-                    }}
+                  <ToggleButton
+                    value="bold"
+                    aria-label="bold"
+                    sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
                   >
-                    <ToggleButton
-                      value="bold"
-                      aria-label="bold"
-                      sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
-                    >
-                      <FormatBoldIcon sx={{ fontSize: "22px" }} />
-                    </ToggleButton>
-                    <ToggleButton
-                      value="italic"
-                      aria-label="italic"
-                      sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
-                    >
-                      <FormatItalicIcon sx={{ fontSize: "22px" }} />
-                    </ToggleButton>
-                    <ToggleButton
-                      value="underlined"
-                      aria-label="underlined"
-                      sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
-                    >
-                      <FormatUnderlinedIcon sx={{ fontSize: "22px" }} />
-                    </ToggleButton>
-                  </ToggleButtonGroup>
-
-                  <Divider
-                    orientation="vertical"
-                    sx={{ height: "17px", alignItems: "center" }}
-                  />
-
-                  <ToggleButtonGroup
-                    value={formats}
-                    onChange={handleFormat}
-                    aria-label="text formatting"
-                    sx={{
-                      display: "flex",
-                      gap: 0.5,
-                    }}
+                    <FormatBoldIcon sx={{ fontSize: "22px" }} />
+                  </ToggleButton>
+                  <ToggleButton
+                    value="italic"
+                    aria-label="italic"
+                    sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
                   >
-                    <ToggleButton
-                      value="left"
-                      aria-label="left aligned"
-                      sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
-                    >
-                      <Icon icon="pixel:bullet-list" width="22" height="24" />
-                    </ToggleButton>
-                    <ToggleButton
-                      value="center"
-                      aria-label="centered"
-                      sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
-                    >
-                      <Icon icon="bx:list-ol" width="24" height="24" />
-                    </ToggleButton>
-                  </ToggleButtonGroup>
-
-                  <Divider
-                    orientation="vertical"
-                    sx={{ height: "17px", alignItems: "center" }}
-                  />
-
-                  <ToggleButtonGroup
-                    value={formats}
-                    onChange={handleFormat}
-                    aria-label="text formatting"
-                    sx={{
-                      display: "flex",
-                      gap: 0.5,
-                    }}
+                    <FormatItalicIcon sx={{ fontSize: "22px" }} />
+                  </ToggleButton>
+                  <ToggleButton
+                    value="underlined"
+                    aria-label="underlined"
+                    sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
                   >
-                    <ToggleButton
-                      value="left"
-                      aria-label="left aligned"
-                      sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
-                    >
-                      <FormatAlignLeftIcon sx={{ fontSize: "20px" }} />
-                    </ToggleButton>
-                    <ToggleButton
-                      value="center"
-                      aria-label="centered"
-                      sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
-                    >
-                      <FormatAlignCenterIcon sx={{ fontSize: "20px" }} />
-                    </ToggleButton>
-                    <ToggleButton
-                      value="right"
-                      aria-label="right aligned"
-                      sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
-                    >
-                      <FormatAlignRightIcon sx={{ fontSize: "20px" }} />
-                    </ToggleButton>
-                    <ToggleButton
-                      value="right"
-                      aria-label="right aligned"
-                      sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
-                    >
-                      <FormatAlignJustifyIcon sx={{ fontSize: "20px" }} />
-                    </ToggleButton>
-                  </ToggleButtonGroup>
-                </Box>
-                {/* Text Box */}
-                <Box
-                  component="form"
-                  sx={{
-                    "& .MuiTextField-root": { width: "100%" },
-                    backgroundColor: "#f6f7f8",
-                  }}
-                  noValidate
-                  autoComplete="off"
+                    <FormatUnderlinedIcon sx={{ fontSize: "22px" }} />
+                  </ToggleButton>
+                </ToggleButtonGroup>
+
+                <Divider orientation="vertical" sx={{ height: "17px" }} />
+
+                <ToggleButtonGroup
+                  value={formats}
+                  onChange={handleFormat}
+                  aria-label="list formatting"
+                  sx={{ display: "flex", gap: 0.5 }}
                 >
-                  <TextField
-                    id="filled-multiline-static"
-                    multiline
-                    rows={7}
-                    placeholder="Write Something awesome..."
-                    variant="outlined"
-                    sx={{
-                      "& .MuiOutlinedInput-root": {
-                        "& fieldset": {
-                          border: "none",
-                        },
-                        "&:hover fieldset": {
-                          border: "none",
-                        },
-                        "&.Mui-focused fieldset": {
-                          border: "none",
-                        },
-                      },
-                    }}
-                  />
-                </Box>
+                  <ToggleButton
+                    value="ul"
+                    aria-label="unordered list"
+                    sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
+                  >
+                    <Icon icon="pixel:bullet-list" width="22" height="24" />
+                  </ToggleButton>
+                  <ToggleButton
+                    value="ol"
+                    aria-label="ordered list"
+                    sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
+                  >
+                    <Icon icon="bx:list-ol" width="24" height="24" />
+                  </ToggleButton>
+                </ToggleButtonGroup>
+
+                <Divider orientation="vertical" sx={{ height: "17px" }} />
+
+                <ToggleButtonGroup
+                  value={formats}
+                  onChange={handleFormat}
+                  aria-label="text alignment"
+                  sx={{ display: "flex", gap: 0.5 }}
+                >
+                  <ToggleButton
+                    value="left"
+                    aria-label="left aligned"
+                    sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
+                  >
+                    <FormatAlignLeftIcon sx={{ fontSize: "20px" }} />
+                  </ToggleButton>
+                  <ToggleButton
+                    value="center"
+                    aria-label="centered"
+                    sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
+                  >
+                    <FormatAlignCenterIcon sx={{ fontSize: "20px" }} />
+                  </ToggleButton>
+                  <ToggleButton
+                    value="right"
+                    aria-label="right aligned"
+                    sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
+                  >
+                    <FormatAlignRightIcon sx={{ fontSize: "20px" }} />
+                  </ToggleButton>
+                  <ToggleButton
+                    value="justify"
+                    aria-label="justified"
+                    sx={{ minWidth: 30, height: 30, border: "none", p: 0 }}
+                  >
+                    <FormatAlignJustifyIcon sx={{ fontSize: "20px" }} />
+                  </ToggleButton>
+                </ToggleButtonGroup>
               </Box>
+
+              {/* TextField*/}
+              <FormControl sx={{ width: "100%" }}>
+                <TextField
+                  id="content-textarea"
+                  multiline
+                  rows={7}
+                  placeholder="Write Something awesome..."
+                  variant="outlined"
+                  value={contentvalue}
+                  onChange={(e) => setContentValue(e.target.value)}
+                  onBlur={() => setcontentTouched(true)}
+                  error={hasContentError}
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      borderTopLeftRadius: 0,
+                      borderTopRightRadius: 0,
+                    },
+                  }}
+                />
+                {hasContentError && (
+                  <FormHelperText sx={{ color: "red" }}>
+                    Content field required
+                  </FormHelperText>
+                )}
+              </FormControl>
             </Box>
 
             {/* Image Field */}
@@ -425,12 +408,7 @@ export default function TourNewEditForm() {
                   color="primary"
                   onClick={handleOpenClick}
                 >
-                  {open ? (
-                    <ExpandLess />
-                    
-                  ) : (
-                    <ExpandMore />
-                  )}
+                  {open ? <ExpandLess /> : <ExpandMore />}
                 </IconButton>
               </Box>
               <Typography color="grey">
