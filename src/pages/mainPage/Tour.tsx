@@ -48,22 +48,20 @@ export default function Tour() {
   };
 
   const handleAddButton = () => {
-    console.log("Print ");
     navigate("/tour/add-edit-form");
   };
 
   return (
     <React.Fragment>
       <Container sx={{ maxWidth: "1200px", pt: 1, pr: 5, pb: 8, pl: 5 }}>
-       
-        <Box sx={{ mb: {xs:3, sm:5} }}>
+        <Box sx={{ mb: { xs: 3, sm: 5 } }}>
           <Box
             sx={{
               display: "flex",
-              flexDirection: {xs: "column", sm: "row"},
+              flexDirection: { xs: "column", sm: "row" },
               justifyContent: "space-between",
               alignItems: "flex-start",
-              gap: {xs: 1.5, md: 0},
+              gap: { xs: 1.5, md: 0 },
             }}
           >
             <Box
@@ -77,6 +75,7 @@ export default function Tour() {
                 List
               </Typography>
               <CustomBreadcrumb
+              
                 name={name}
                 link={link}
                 current_component="viraj"
@@ -105,7 +104,7 @@ export default function Tour() {
           </Box>
         </Box>
 
-        <Box sx={{ mb: {xs:3, sm:5} }}>
+        <Box sx={{ mb: { xs: 3, sm: 5 } }}>
           <Box
             sx={{
               display: "flex",
@@ -113,7 +112,7 @@ export default function Tour() {
               flexDirection: "row",
               justifyContent: "space-between",
               alignItems: "center",
-              gap: {xs: 2, sm:0}
+              gap: { xs: 2, sm: 0 },
             }}
           >
             <Autocomplete
@@ -150,7 +149,14 @@ export default function Tour() {
                 />
               )}
             />
-            <Box sx={{ display: "flex",flexWrap: "wrap", flexDirection: "row", gap: 1 }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexWrap: "wrap",
+                flexDirection: "row",
+                gap: 1,
+              }}
+            >
               <TourFilter />
               <TourSort
                 sort={sort}
