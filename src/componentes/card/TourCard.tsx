@@ -13,6 +13,7 @@ import {
 import { Icon } from "@iconify/react";
 import type { ITourItemList } from "../../types/tours";
 import Menu_Component from "../menubarComponents/MenuComponent";
+import { useNavigate } from "react-router";
 
 function srcset(image: string, size: number, rows = 1, cols = 1) {
   return {
@@ -24,13 +25,22 @@ function srcset(image: string, size: number, rows = 1, cols = 1) {
 }
 
 export default function TourCard(tours: ITourItemList) {
+  const navigate = useNavigate();
+
+  const navigateToDetailPage = () => {
+    navigate("detail");
+  };
   return (
     <>
       <Box>
         <Grid container spacing={{ xs: 2, md: 3 }}>
           {tours.tourListItems.map((items, index) => (
-            <Grid size={{ xs: 12, md: 4 }}>
-              <Card key={index} sx={{ borderRadius: "15px" }}>
+            <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+              <Card
+                key={index}
+                sx={{ borderRadius: "15px" }}
+                onClick={navigateToDetailPage}
+              >
                 <CardMedia
                   sx={{
                     px: 1,
